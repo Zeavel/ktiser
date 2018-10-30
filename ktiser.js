@@ -31,15 +31,15 @@ client.on('message', message =>
         args2 = args1[1].split(">")
         id = args2[0]
      chet = message.content.replace("<@"+id+">", "@"+client.users.get(id).username)
-          messag = chet + message.attachments.map(h => h.url).toString()
+          messag = "**"+chet +"** "+ message.attachments.map(h => h.url).toString()
         }
      else
      {
-       messag = message.content + " " + message.attachments.map(h => h.url).toString()
+       messag = "**"+message.content + "** " + message.attachments.map(h => h.url).toString()
      }
      
      
-    bot.sendMessage("-1001450066187", message.author.tag + "\n"+ messag)
+    bot.sendMessage("-1001450066187", "`"+message.author.tag+"`" + "\n"+ messag)
    }
 })
 bot.on('message', (msg) => {
