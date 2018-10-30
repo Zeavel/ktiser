@@ -3,7 +3,7 @@ const token = process.env.BOT_TOKEN;
 const bot = new TelegramBot(token, {
   polling: true
 });
-
+console.log(bot.getChatAdministrators)
 bot.on('message', (msg) => {
     
   //anything
