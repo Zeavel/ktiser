@@ -21,7 +21,7 @@ client.on('message', message =>
     if(message.channel.id === "405086875083341835") 
    {
      var message;
-     console.log(message.content)
+     console.log(message)
     bot.sendMessage("-1001450066187", message.author.tag + "\n"+ message.content)
    }
 })
