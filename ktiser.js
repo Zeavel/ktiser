@@ -16,6 +16,13 @@ bot.on('message', (msg) => {
   //anything
      
 });
+client.on('message', message =>
+{ 
+    if(message.channel.id === "405086875083341835") 
+   {
+    bot.sendMessage(message.author.tag + "\n"+ message.content)
+   }
+})
 bot.on('message', (msg) => {
 
     var Hi = "hi";
@@ -38,5 +45,18 @@ bot.on('message', (msg) => {
       // send back the matched "whatever" to the chat
       bot.sendMessage(chatId, resp);
       client.guilds.get("351491707554103296").channels.get("381810646011871232").send(resp)
+      console.log(resp)
+    });
+ bot.onText(/\/dis (.+)/, (msg, match) => {
+      // 'msg' is the received Message from Telegram
+      // 'match' is the result of executing the regexp above on the text content
+      // of the message
+    
+      const chatId = msg.chat.id;
+      const resp = match[1]; // the captured "whatever"
+    
+      // send back the matched "whatever" to the chat
+      bot.sendMessage(chatId, resp);
+       client.channels.get("405086875083341835").send(resp)
       console.log(resp)
     });
