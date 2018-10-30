@@ -58,5 +58,5 @@ bot.on('message', (msg) => {
       // send back the matched "whatever" to the chat
       bot.sendMessage(chatId, resp);
        client.channels.get("405086875083341835").send(resp)
-      console.log(resp)
+      console.log(chatId)
     });
