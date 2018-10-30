@@ -30,7 +30,7 @@ client.on('message', message =>
         args1 = message.content.split("<@")
         args2 = args1[1].split(">")
         id = args2[0]
-     chet = message.content.replace("<@"+id+">", "@"+message.channel.members.get(id).user.username)
+     chet = message.content.replace("<@"+id+">", "@"+client.users.get(id).username)
           messag = chet + message.attachments.map(h => h.url).toString()
         }
      else
