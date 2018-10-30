@@ -10,7 +10,7 @@ const Command = CC.Command;
 var Commandss = new CC.Commands();
 var fs = require("fs");
 var prefix = "."
-client.login(DIS_TOKEN)
+client.login(process.env.DIS_TOKEN)
 bot.on('message', (msg) => {
     
   //anything
