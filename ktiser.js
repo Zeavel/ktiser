@@ -35,7 +35,7 @@ client.on('message', message =>
         }
      else
      {
-       messag = message.content + message.attachments.map(h => h.url).toString()
+       messag = message.content + " " + message.attachments.map(h => h.url).toString()
      }
      
      
