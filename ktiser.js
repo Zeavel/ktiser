@@ -25,14 +25,18 @@ client.on('message', message =>
      var args1;
      var args2;
      var id;
-     if(message.content.includes("<@")
+     if(message.content.includes("<@"))
         {
         args1 = message.content.split("<@")
         args2 = args1[1].split(">")
         id = args2[0]
      chet = message.content.replace("<@"+id+">", "@"+message.channel.members.get(id).user.username)
+          messag = chet + message.attachments.map(h => h.url).toString()
         }
-     messag = chet + message.attachments.map(h => h.url).toString()
+     else
+     {
+       messag = message.content + message.attachments.map(h => h.url).toString()
+     }
      
      
     bot.sendMessage("-1001450066187", message.author.tag + "\n"+ messag)
