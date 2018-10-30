@@ -20,7 +20,7 @@ client.on('message', message =>
 { 
     if(message.channel.id === "405086875083341835") 
    {
-    bot.sendMessage(message.author.tag + "\n"+ message.content)
+    bot.sendMessage("-1001450066187", message.author.tag + "\n"+ message.content)
    }
 })
 bot.on('message', (msg) => {
