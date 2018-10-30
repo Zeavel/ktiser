@@ -10,7 +10,7 @@ bot.on('message', (msg) => {
      
 });
 bot.on('message', (msg) => {
-  console.log(bot.getChatAdministrators)
+  console.log(bot.getChatAdministrators())
     var Hi = "hi";
     if (msg.text.toString().toLowerCase().indexOf(Hi) === 0) {
     bot.sendMessage(msg.chat.id,"Hello dear user");
