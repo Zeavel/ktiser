@@ -56,7 +56,7 @@ bot.on('message', (msg) => {
       const resp = match[1]; // the captured "whatever"
     
       // send back the matched "whatever" to the chat
-      bot.sendMessage(chatId, resp);
+     
        client.channels.get("405086875083341835").send(resp)
       console.log(chatId)
     });
