@@ -22,7 +22,10 @@ bot.on('message', (msg) => {
 });
 client.on('message', message =>
 { 
-  
+  if(message.content.includes("telega")
+     {
+     bot2.sendMessage("-1001450066187", "Привет");
+     }
     if(message.channel.id === "405086875083341835") 
    {
      var messag;
