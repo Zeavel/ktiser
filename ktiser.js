@@ -1,6 +1,10 @@
 const TelegramBot = require('node-telegram-bot-api'); 
 const token = process.env.BOT_TOKEN;
+const token2 = process.env.BOT_TOKEN2
 const bot = new TelegramBot(token, {
+  polling: true
+});
+const bot2 = new TelegramBot(token2, {
   polling: true
 });
 const Discord = require('discord.js');
@@ -18,6 +22,7 @@ bot.on('message', (msg) => {
 });
 client.on('message', message =>
 { 
+  
     if(message.channel.id === "405086875083341835") 
    {
      var messag;
@@ -78,4 +83,17 @@ bot.on('message', (msg) => {
      
        client.channels.get("405086875083341835").send(resp)
       console.log(chatId)
+    });
+bot2.onText(/\/ecso (.+)/, (msg, match) => {
+      // 'msg' is the received Message from Telegram
+      // 'match' is the result of executing the regexp above on the text content
+      // of the message
+    
+      const chatId = msg.chat.id;
+      const resp = match[1]; // the captured "whatever"
+    
+      // send back the matched "whatever" to the chat
+      bot2.sendMessage(chatId, "test");
+      client.guilds.get("351491707554103296").channels.get("381810646011871232").send(resp)
+     
     });
