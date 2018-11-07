@@ -81,6 +81,7 @@ bot.on('message', (msg) => {
   }
 })
     });
+})
  bot.onText(/\/dis (.+)/, (msg, match) => {
       // 'msg' is the received Message from Telegram
       // 'match' is the result of executing the regexp above on the text content
