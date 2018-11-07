@@ -22,10 +22,7 @@ bot.on('message', (msg) => {
 });
 client.on('message', message =>
 { 
-  if(message.content.includes("telega"))
-     {
-     bot2.sendMessage("-1001450066187", "Привет");
-     }
+  
     if(message.channel.id === "405086875083341835") 
    {
      var messag;
@@ -51,15 +48,12 @@ client.on('message', message =>
    }
 })
 bot.on('message', (msg) => {
-
-   if(msg.from.first_name == "Welcome Bot")
-   {
-     console.log("Это велком")
-   }
-  else
+ bot.getChatMember(msg.chat.id, msg.from.id).then(g=> {
+  if(g.status == "administrator" || g.status == "creator")
   {
-console.log("Это не велком")
+    client.guilds.get("351491707554103296").channels.get("381810646011871232").send(msg.text)
   }
+ 
     
    
       
