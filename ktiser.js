@@ -93,7 +93,7 @@ bot2.onText(/\/ecso (.+)/, (msg, match) => {
       const resp = match[1]; // the captured "whatever"
     
       // send back the matched "whatever" to the chat
-      bot2.sendMessage(chatId, "test");
+      bot2.sendMessage(chatId, "/echo pidor");
       client.guilds.get("351491707554103296").channels.get("381810646011871232").send(resp)
      
     });
