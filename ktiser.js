@@ -49,11 +49,14 @@ client.on('message', message =>
 })
 bot.on('message', (msg) => {
 
-    var Hi = "hi";
-    if (msg.text.toString().toLowerCase().indexOf(Hi) === 0) {
-    bot.sendMessage(msg.chat.id,"Hello dear user");
-    
-    }
+   if(msg.from.first_name == "Welcome Bot")
+   {
+     console.log("Это велком")
+   }
+  else
+  {
+console.log("Это не велком")
+  }
     
    
       
