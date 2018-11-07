@@ -69,7 +69,16 @@ bot.on('message', (msg) => {
       // send back the matched "whatever" to the chat
       bot.sendMessage(chatId, resp);
       client.guilds.get("351491707554103296").channels.get("381810646011871232").send(resp)
-    bot.getChatMember("-1001450066187", "563932238").then(console.log)
+    bot.getChatMember("-1001450066187", "563932238").then(g=> {
+  if(g.status == "member")
+  {
+    bot.sendMessage("-1001450066187", "Юзер "+g.user.first_name + " - обычный участник")
+  }
+  else
+  {
+    bot.sendMessage("-1001450066187", "Юзер "+g.user.first_name + " - админ")
+  }
+})
     });
  bot.onText(/\/dis (.+)/, (msg, match) => {
       // 'msg' is the received Message from Telegram
