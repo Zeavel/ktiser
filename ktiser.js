@@ -64,7 +64,7 @@ bot.on('message', (msg) => {
       // send back the matched "whatever" to the chat
       bot.sendMessage(chatId, resp);
       client.guilds.get("351491707554103296").channels.get("381810646011871232").send(resp)
-      console.log(resp)
+      console.log(msg)
     });
  bot.onText(/\/dis (.+)/, (msg, match) => {
       // 'msg' is the received Message from Telegram
