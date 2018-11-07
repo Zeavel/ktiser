@@ -22,7 +22,7 @@ bot.on('message', (msg) => {
 });
 client.on('message', message =>
 { 
-  if(message.content.includes("telega")
+  if(message.content.includes("telega"))
      {
      bot2.sendMessage("-1001450066187", "Привет");
      }
