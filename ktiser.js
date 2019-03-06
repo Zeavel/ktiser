@@ -1,110 +1,170 @@
-const TelegramBot = require('node-telegram-bot-api'); 
-const token = process.env.BOT_TOKEN;
-const token2 = process.env.BOT_TOKEN2
-const bot = new TelegramBot(token, {
-  polling: true
-});
-const bot2 = new TelegramBot(token2, {
-  polling: true
-});
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const CC = require('./command_create.js');
-const Command = CC.Command;
-var Commandss = new CC.Commands();
+
+
+
+
+
+
+
 var fs = require("fs");
-var prefix = "."
-client.login(process.env.DIS_TOKEN)
-bot.on('message', (msg) => {
-    
-  //anything
+
+function commandIs(str, msg){
+    return msg.content.toLowerCase().startsWith("-" + str);
+}
+
+function pluck(array) {
+    return array.map(function(item) { return item["name"]; });
+}
+
+function hasRole(mem, role)
+{
+    if (pluck(mem.roles).includes(role))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+function getRandomInt(min, max)
+{
+
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+
+}
+
+
+
+/*client.on("ready", n =>{
+    client.setInterval(function play()
+    {
      
-});
-client.on('message', message =>
-{ 
-  
-    if(message.channel.id === "405086875083341835") 
-   {
-     var messag;
-     var chet;
-     var args1;
-     var args2;
-     var id;
-     if(message.content.includes("<@"))
-        {
-        args1 = message.content.split("<@")
-        args2 = args1[1].split(">")
-        id = args2[0]
-     chet = message.content.replace("<@"+id+">", "@"+client.users.get(id).username)
-          messag = "**"+chet +"** "+ message.attachments.map(h => h.url).toString()
-        }
-     else
-     {
-       messag = "**"+message.content + "** " + message.attachments.map(h => h.url).toString()
-     }
+            var sam = client.guilds.get("351491707554103296").members.size
+            var mems = client.guilds.get("351491707554103296").members.map(g=>g.id)
+            for(i=0;i<sam;i++)
+            {
+                var user = client.guilds.get("351491707554103296").members.get(mems[i])
+                var roles = client.guilds.get("351491707554103296").members.get(mems[i]).roles.map(h=>h.name)
+                if(roles.includes("Стример"))
+                {
+                  
+                    user.user.fetchProfile().then(f=>{
+                        var url =  f.connections.map(f=>f.id)
+                        var nam =  f.connections.map(f=>f.name)
+                       var serv = f.connections.map(f=>f.type)
+                       var sez = f.connections.size
+                    var typeurl;
+           
+                    for(d=0;d<sez;d++)
+                    {
+                        var urle = url[d]
+                        var typ = serv[d]
+                        if(typ == "youtube")
+                        {
+                            typeurl = "https://www.youtube.com/channel/"+urle
+
+                        }
+                        if(typ == "twitch")
+                        {
+                            typeurl = "https://www.twitch.tv/"+nam[d]
+
+                        }
+                        
+                    }
+                     
+                     })
+                }
+          
+            }
+            var urle = "http://uo.theabyss.ru";
+            var cheerio = require('cheerio');
+            var request = require('request');
+        
+            request(urle, function (error, response, body) {
+              if (!error) {
+                
+                var $ = cheerio.load(body)
+        
+              }
+            })
      
-     
-    bot.sendMessage("-1001450066187", "`"+message.author.tag+"`" + "\n"+ messag)
-   }
-})
-bot.on('message', (msg) => {
- bot.getChatMember(msg.chat.id, msg.from.id).then(g=> {
-  if(g.status == "administrator" || g.status == "creator")
-  {
-    client.guilds.get("351491707554103296").channels.get("381810646011871232").send(msg.text)
-  }
+       
+    },5000)
+})*/
+client.on("message", message =>
+{
  
-    
+if(commandIs("opr",message))
+{
+     var time = message.content.substring(5)
+     message.channel.send("Задайте вопрос")
+     const filter = m => m.content.startsWith('!');
+     message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
+     .then(collected => {
+       var ask = collected.map(h=>h.content.replace("!","")).toString()
+       message.channel.send("Задайте ответы, разделите ответы через | и емодзи через запятую, пример '!ответ,:one:|ответ2,:two:'")
+       message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
+       .then(collectede => {
+              var que = collectede.map(h=>h.content.replace("!","")).toString()
+              var que2 = que.split("|")
+              var emomas = [];
+              for(i=0;i<que2.length;i++)
+              {
+                  var asq = que2[i].split(",")
+                  var sq = asq[0]
+                  var emo = asq[1]
+
+              }
+              var msid;
+              var embed = new Discord.RichEmbed()
+              .setTitle(ask)
+              for(i=0;i<que2.length;i++)
+              {
+                var asq = que2[i].split(",")
+                var sq = asq[0]
+                 embed.addField(sq, 0)
+              }
+              message.channel.send(embed).then(m=>{
+                  for(d=0;d<que2.length;d++)
+                  {
+                    var asq = que2[d].split(",")
+                    var emo = asq[1]
+                    emomas.push(emo)
+                    m.react(emo)
+                   
+                  }
+                 // console.log(m.embeds[0].fields)
+                  const filter = (user) => !user.bot
+                  m.awaitReactions(filter, { time: parseInt(time)*1000})
+                  .then((collectedr) => {
+               var userz = collectedr.map(g=>g.users)
+            
+var names = collectedr.map(g=>g.emoji.name)
+var count = collectedr.map(g=>g.emoji.reaction.count)
+var em = new Discord.RichEmbed(m.embeds[0])
+ for(r=0;r<que2.length;r++)
+ {
+    em.fields[emomas.indexOf(names[r])].value = count[r] - 1
+     
+ }
+ m.edit(em)
+
+                  })
+          
+              })
+             
+             
+             
+       })
+     })
+  
+
+
+}
    
-      
-    });
-    bot.onText(/\/echo (.+)/, (msg, match) => {
-      // 'msg' is the received Message from Telegram
-      // 'match' is the result of executing the regexp above on the text content
-      // of the message
-    
-      const chatId = msg.chat.id;
-      const resp = match[1]; // the captured "whatever"
-    
-      // send back the matched "whatever" to the chat
-      bot.sendMessage(chatId, resp);
-      client.guilds.get("351491707554103296").channels.get("381810646011871232").send(resp)
-      console.log(msg)
-    bot.getChatMember("-1001450066187", "563932238").then(g=> {
-  if(g.status == "member")
-  {
-    bot.sendMessage("-1001450066187", "Юзер "+g.user.first_name + " - обычный участник")
-  }
-  else
-  {
-    bot.sendMessage("-1001450066187", "Юзер "+g.user.first_name + " - админ")
-  }
 })
-    });
-})
- bot.onText(/\/dis (.+)/, (msg, match) => {
-      // 'msg' is the received Message from Telegram
-      // 'match' is the result of executing the regexp above on the text content
-      // of the message
-    
-      const chatId = msg.chat.id;
-      const resp = match[1]; // the captured "whatever"
-    
-      // send back the matched "whatever" to the chat
-     
-       client.channels.get("405086875083341835").send(resp)
-      console.log(chatId)
-    });
-bot2.onText(/\/ecso (.+)/, (msg, match) => {
-      // 'msg' is the received Message from Telegram
-      // 'match' is the result of executing the regexp above on the text content
-      // of the message
-    
-      const chatId = msg.chat.id;
-      const resp = match[1]; // the captured "whatever"
-    
-      // send back the matched "whatever" to the chat
-      bot2.sendMessage(chatId, "Привет");
-      client.guilds.get("351491707554103296").channels.get("381810646011871232").send(resp)
-     
-    });
+
+
+client.login(process.env.TOKEN)//
