@@ -175,7 +175,35 @@ var count = collectedr.map(g=>g.emoji.reaction.count)
 var em = new Discord.RichEmbed(m.embeds[0])
  for(r=0;r<que2.length;r++)
  {
-    em.fields[emomas.indexOf(names[r])].value = count[r] - 1
+     
+    var cel = collectedr.size - 1
+    var del = count[r] - 1
+    var percn =  parseInt(100/cel*del)
+    if(percn>10)
+    {
+        percn = percn - parseInt(percn.toString()[1])
+    }
+    if(percn<10 && percn>0)
+    {
+        percn = 10
+    }
+    if(percn == 0)
+    {
+        percn = 0
+    }
+    var bl = ""
+    var wh = ""
+    var reverse = 100 - percn
+    for(i=0;i<percn/10;i++)
+    {
+        wh = wh + " :large_blue_circle: "
+    }
+    for(i=0;i<reverse/10;i++)
+    {
+        bl = bl + " :black_circle: "
+    }
+    em.fields[emomas.indexOf(names[r])].value = count[r] - 1 + " " + wh + bl
+   
      
  }
  m.edit(em)
