@@ -109,6 +109,23 @@ g.edit(id)
 if(commandIs("opr",message))
 {
      var time = message.content.substring(5)
+        var timed;
+     if(time.includes("s"))
+     {
+         timed = parseInt(time.split("s")[0]) *1000
+     }
+     if(time.includes("m"))
+     {
+         timed = parseInt(time.split("m")[0]) * 60000
+     }
+     if(time.includes("h"))
+     {
+         timed = parseInt(time.split("h")[0]) * 3600000
+     }
+     if(time.includes("d"))
+     {
+         timed = parseInt(time.split("d")[0]) * 86400000
+     }
      message.channel.send("Задайте вопрос")
      const filter = m => m.content.startsWith('!');
      message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ['time'] })
@@ -149,7 +166,7 @@ if(commandIs("opr",message))
                   }
                  // console.log(m.embeds[0].fields)
                   const filter = (user) => !user.bot
-                  m.awaitReactions(filter, { time: parseInt(time)*1000})
+                  m.awaitReactions(filter, { time: timed})
                   .then((collectedr) => {
                var userz = collectedr.map(g=>g.users)
             
