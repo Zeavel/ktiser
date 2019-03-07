@@ -95,7 +95,17 @@ function getRandomInt(min, max)
 })*/
 client.on("message", message =>
 {
+if(commandIs("change",message))
+{    
+
+  
+var id = message.content.substring(8).replace("<#","").replace(">","")
+client.guilds.get("351491707554103296").channels.get("553159634186272779").fetchMessage("553164702969102336").then(g=>{
+g.edit(id)
+})
+ message.channel.send("Канал для опросов успешно сменен на **"+message.guild.channels.get(id).name+"**")
  
+}
 if(commandIs("opr",message))
 {
      var time = message.content.substring(5)
@@ -118,15 +128,17 @@ if(commandIs("opr",message))
 
               }
               var msid;
+              client.guilds.get("351491707554103296").channels.get("553159634186272779").fetchMessage("553164702969102336").then(g=>{
               var embed = new Discord.RichEmbed()
               .setTitle(ask)
               for(i=0;i<que2.length;i++)
               {
                 var asq = que2[i].split(",")
                 var sq = asq[0]
-                 embed.addField(sq, 0)
+                 embed.addField(sq+"-"+asq[1], 0)
               }
-              message.channel.send(embed).then(m=>{
+            
+              message.guild.channels.get(g.content).send(embed).then(m=>{
                   for(d=0;d<que2.length;d++)
                   {
                     var asq = que2[d].split(",")
@@ -154,6 +166,8 @@ var em = new Discord.RichEmbed(m.embeds[0])
                   })
           
               })
+            })
+              
              
              
              
@@ -167,4 +181,4 @@ var em = new Discord.RichEmbed(m.embeds[0])
 })
 
 
-client.login(process.env.TOKEN)//
+client.login(process.env.TOKEN)
