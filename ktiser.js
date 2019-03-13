@@ -164,7 +164,7 @@ client.on('raw', packet => {
                          var em = new Discord.RichEmbed(e.embeds[0])
                           for(r=0;r<names.length;r++)
                           {
-                             var cel = men - emomas.length
+                             var cel = men - enomas.length
                              var del = count[r] - 1
                              var percn =  parseInt(100/cel*del)
                              if(percn>10)
@@ -256,7 +256,7 @@ client.on("messageReactionAdd", re=>{
                          var em = new Discord.RichEmbed(e.embeds[0])
                           for(r=0;r<names.length;r++)
                           {
-                             var cel = men - emomas.length
+                             var cel = men - enomas.length
                         var del = count[r] - 1
                         var percn =  parseInt(100/cel*del)
                         if(percn>10)
