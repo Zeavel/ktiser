@@ -374,7 +374,7 @@ g.edit(id)
  message.channel.send("Канал для опросов успешно сменен на **"+message.guild.channels.get(id).name+"**")
  
 }
-if(commandIs("opd",message))
+if(commandIs("opr",message))
 {
      var time = message.content.substring(5)
      var timed;
