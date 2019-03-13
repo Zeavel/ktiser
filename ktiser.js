@@ -413,7 +413,7 @@ if(commandIs("opr",message))
 
               }
               var msid;
-              client.guilds.get("351491707554103296").channels.get("553159634186272779").fetchMessage("554279082775281664").then(g=>{
+              client.guilds.get("351491707554103296").channels.get("553159634186272779").fetchMessage("553164702969102336").then(g=>{
               var embed = new Discord.RichEmbed()
               .setTitle(ask)
               for(i=0;i<que2.length;i++)
