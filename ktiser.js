@@ -156,14 +156,15 @@ client.on('raw', packet => {
                    //  console.log("re:"+e.reactions.size+" meo:"+meo)
                      if(men > meo)
                      {
-                         var names = er.content.split(",")
+                         var enomas = er.content.split(",")
+                         var names = e.reactions.map(ere=>ere.name)
                          var count = e.reactions.map(ere=>ere.count)
                          
                          
                          var em = new Discord.RichEmbed(e.embeds[0])
                           for(r=0;r<names.length;r++)
                           {
-                             var cel = men - names.length
+                             var cel = men - emomas.length
                              var del = count[r] - 1
                              var percn =  parseInt(100/cel*del)
                              if(percn>10)
@@ -189,7 +190,7 @@ client.on('raw', packet => {
                              {
                                  bl = bl + " :black_circle: "
                              }
-                             em.fields[names.indexOf(names[r])].value = count[r] - 1 + " " + wh + bl
+                             em.fields[enomas.indexOf(names[r])].value = count[r] - 1 + " " + wh + bl
                               
                           }
                           e.edit(em)
@@ -247,14 +248,15 @@ client.on("messageReactionAdd", re=>{
               //  console.log("re:"+e.reactions.size+" meo:"+meo)
                 if(men > meo)
                 {
-                    var names = er.content.split(",")
-                    var count = e.reactions.map(ere=>ere.count)
-                    
-                    
-                    var em = new Discord.RichEmbed(e.embeds[0])
-                     for(r=0;r<names.length;r++)
-                     {
-                        var cel = men - names.length
+                       var enomas = er.content.split(",")
+                         var names = e.reactions.map(ere=>ere.name)
+                         var count = e.reactions.map(ere=>ere.count)
+                         
+                         
+                         var em = new Discord.RichEmbed(e.embeds[0])
+                          for(r=0;r<names.length;r++)
+                          {
+                             var cel = men - emomas.length
                         var del = count[r] - 1
                         var percn =  parseInt(100/cel*del)
                         if(percn>10)
@@ -280,7 +282,7 @@ client.on("messageReactionAdd", re=>{
                         {
                             bl = bl + " :black_circle: "
                         }
-                        em.fields[names.indexOf(names[r])].value = count[r] - 1 + " " + wh + bl
+                        em.fields[enomas.indexOf(names[r])].value = count[r] - 1 + " " + wh + bl
                          
                      }
                      e.edit(em)
