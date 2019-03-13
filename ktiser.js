@@ -1,3 +1,5 @@
+
+    
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
@@ -88,12 +90,10 @@ client.on("ready", n =>{
                         if(typ == "youtube")
                         {
                             typeurl = "https://www.youtube.com/channel/"+urle
-
                         }
                         if(typ == "twitch")
                         {
                             typeurl = "https://www.twitch.tv/"+nam[d]
-
                         }
                         
                     }
@@ -157,7 +157,7 @@ client.on('raw', packet => {
                      if(men > meo)
                      {
                          var enomas = er.content.split(",")
-                         var names = e.reactions.map(ere=>ere.name)
+                         var names = e.reactions.map(ere=>ere.emoji.name)
                          console.log(names)
                          var count = e.reactions.map(ere=>ere.count)
                          
@@ -249,8 +249,9 @@ client.on("messageReactionAdd", re=>{
               //  console.log("re:"+e.reactions.size+" meo:"+meo)
                 if(men > meo)
                 {
-                       var enomas = er.content.split(",")
-                         var names = e.reactions.map(ere=>ere.name)
+                      var enomas = er.content.split(",")
+                         var names = e.reactions.map(ere=>ere.emoji.name)
+                         console.log(names)
                          var count = e.reactions.map(ere=>ere.count)
                          
                          
@@ -258,7 +259,7 @@ client.on("messageReactionAdd", re=>{
                           for(r=0;r<names.length;r++)
                           {
                              var cel = men - enomas.length
-                        var del = count[r] - 1
+                             var del = count[r] - 1
                         var percn =  parseInt(100/cel*del)
                         if(percn>10)
                         {
@@ -476,8 +477,6 @@ r.edit(0)
             
 var names = collectedr.map(g=>g.emoji.name)
 var count = collectedr.map(g=>g.emoji.reaction.count)
-
-
 var em = new Discord.RichEmbed(m.embeds[0])
  for(r=0;r<que2.length;r++)
  {
@@ -511,7 +510,6 @@ var em = new Discord.RichEmbed(m.embeds[0])
      
  }
  m.edit(em)
-
                   })*/
           
               })
@@ -530,3 +528,4 @@ var em = new Discord.RichEmbed(m.embeds[0])
 })
 
 client.login(process.env.TOKEN)
+
