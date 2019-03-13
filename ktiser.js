@@ -158,6 +158,7 @@ client.on('raw', packet => {
                      {
                          var enomas = er.content.split(",")
                          var names = e.reactions.map(ere=>ere.name)
+                         console.log(names)
                          var count = e.reactions.map(ere=>ere.count)
                          
                          
