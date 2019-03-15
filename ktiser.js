@@ -156,6 +156,25 @@ client.on('raw', packet => {
                    //  console.log("re:"+e.reactions.size+" meo:"+meo)
                      if(men > meo)
                      {
+                       var users = reaction.users.map(d=>d.id)
+                    
+                        var usera = users[users.length-1]
+                        var sie = 0;
+                        var userre = e.reactions.map(ere=>ere.users.map(g=>g.id)).toString().split(",")
+                        console.log(userre)
+                      for(w=0;w<userre.length;w++)
+                      {
+                          if(userre[w]==usera)
+                          {
+                              sie = sie + 1
+                          }
+                      }
+                      if(sie>1)
+                      {
+                          reaction.remove(usera)
+                      }
+            else
+            {
                          var enomas = er.content.split(",")
                          var names = e.reactions.map(ere=>ere.emoji.name)
                          console.log(names)
@@ -195,6 +214,7 @@ client.on('raw', packet => {
                               
                           }
                           e.edit(em)
+                        }
                      }
                  })
                 })
@@ -249,17 +269,34 @@ client.on("messageReactionAdd", re=>{
               //  console.log("re:"+e.reactions.size+" meo:"+meo)
                 if(men > meo)
                 {
-                      var enomas = er.content.split(",")
+                    var users = re.users.map(d=>d.id)
+                    var usera = users[users.length-1]
+                    var sie = 0;
+                    var userre = e.reactions.map(ere=>ere.users.map(g=>g.id)).toString().split(",")
+                  for(w=0;w<userre.length;w++)
+                  {
+                      if(userre[w]==usera)
+                      {
+                          sie = sie + 1
+                      }
+                  }
+                  if(sie>1)
+                  {
+                      re.remove(usera)
+                  }
+        else
+        {
+             var enomas = er.content.split(",")
                          var names = e.reactions.map(ere=>ere.emoji.name)
-                         console.log(names)
                          var count = e.reactions.map(ere=>ere.count)
                          
-                         
+               
                          var em = new Discord.RichEmbed(e.embeds[0])
                           for(r=0;r<names.length;r++)
                           {
+                            console.log(er.content)
                              var cel = men - enomas.length
-                             var del = count[r] - 1
+                        var del = count[r] - 1
                         var percn =  parseInt(100/cel*del)
                         if(percn>10)
                         {
@@ -288,6 +325,7 @@ client.on("messageReactionAdd", re=>{
                          
                      }
                      e.edit(em)
+        }
                 }
             })
            })
